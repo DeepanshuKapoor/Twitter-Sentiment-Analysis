@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+		var cpv=Number('{{cp}}');
+		var cnv=Number('{{cn}}');
+		var cngv=Number('{{cng}}');
+      // Load Charts and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Draw the pie chart for Sarah's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawPercentChart);
+
+
+      // Callback that draws the pie chart for Sarah's pizza.
+      function drawPercentChart() {
+		
+		
+        // Create the data table for Sarah's pizza.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Sentiments');
+        data.addColumn('number', 'Percentage');
+        data.addRows([
+          ['Positive', cpv],
+          ['Neutral', cnv],
+          ['Negative', cngv]
+        ]);
+
+        // Set options for Sarah's pie chart.
+        var options = {title:'Tweets Analysis Pie Chart',
+                       width:400,
+                       height:300};
+
+        // Instantiate and draw the chart for Sarah's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('Percent_chart_div'));
+        chart.draw(data, options);
+      }
+
+    </script>
+
+
+
+
+
+
+	<title>Tweets</title>
+	<link rel="shortcut icon" href="/static/fav.png"> 
+</head>
+	<body>
+		<p><img src="/static/face.png" width="70" height="70" title="Sentiments" style="float:left;margin:0 20px 20px 0;"></br><h2>ANALYSIS</h2></p>	
+		
+		</br></br></br>
+		<center><div id="Percent_chart_div" style="border: 1px solid #ccc"></div></center>
+		
+		<form><button type='submit' value='submit' onclick="alert('Geocode:  ' +'{{cp}}'+typeof(cpv))" />
+		</form>
+		<div class="container-fluid">
+			<div class="row">
+  				 
+  					{%  for item1,item2 in list1_list2 %}
+					{% if item2 =='positive' %}
+					<div class="col-md-4">
+					
+					
+					<p style="color:blue">{{item1}}</p>
+  					
+  			
+    
+  					</div>
+					{% elif item2 =='neutral' %}
+  					<div class="col-md-4">
+					
+					
+					<p style="color:red">{{item1}}</p>
+  					
+  					</div>
+  					{% elif item2 =='negative' %}
+					<div class="col-md-4">
+					
+					
+					<p style="color:yellow">{{item1}}</p>
+					</div>  					
+  					{% endif %}
+					{% endfor %}
+  				
+    		
+  			</div>
+		</div>
+	
+		<!--
+		{%  for item1,item2 in list1_list2 %}
+		{% if item2 =='positive' %}
+		<p style="color:green">{{item1}}</p>
+		{% elif item2 =='negative' %}
+		<p style="color:red">{{item1}}</p>
+		{% else %}
+		<p style="color:blue">{{item1}}</p>
+		{% endif %}
+		{% endfor %}
+		
+		-->
+		
+	</body>
+</html>
