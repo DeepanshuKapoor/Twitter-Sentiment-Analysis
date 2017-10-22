@@ -21,15 +21,15 @@
       // Load Charts and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
 
-      // Draw the pie chart for Sarah's pizza when Charts is loaded.
+      // Draw the pie chart for neutral , positive , negative setiments when Charts is loaded.
       google.charts.setOnLoadCallback(drawPercentChart);
 
 
-      // Callback that draws the pie chart for Sarah's pizza.
+      // Callback that draws the pie chart for neutral , positive , negative setiments.
       function drawPercentChart() {
 		
 		
-        // Create the data table for Sarah's pizza.
+        // Create the data table for neutral , positive , negative setiments.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Sentiments');
         data.addColumn('number', 'Percentage');
@@ -39,12 +39,12 @@
           ['Negative', cngv]
         ]);
 
-        // Set options for Sarah's pie chart.
+        // Set options for neutral , positive , negative setiments pie chart.
         var options = {title:'Tweets Analysis Pie Chart',
                        width:400,
                        height:300};
 
-        // Instantiate and draw the chart for Sarah's pizza.
+        // Instantiate and draw the chart for neutral , positive , negative setiments.
         var chart = new google.visualization.PieChart(document.getElementById('Percent_chart_div'));
         chart.draw(data, options);
       }
