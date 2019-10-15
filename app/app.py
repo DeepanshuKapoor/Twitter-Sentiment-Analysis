@@ -6,12 +6,6 @@ app=Flask(__name__)
 def hello():
 	return "Hello Peeps"
 
-@app.route('/<name>')
-def hello_name(name):
-	return "Hello"+name
-
-
-
 @app.route("/url/<name2>")
 def hello_user(name2):
 	if name2=="Peeps":
@@ -26,14 +20,13 @@ def executefile():
 	return redirect(url_for("print"))
 
 
-
-
 #Lets Build A Form
 
 
 @app.route('/')
 def hello_admin():
 	return render_template('login.html')
+
 @app.route('/<name>')
 def hello_user(name):
 	return "Hello"+" "+name
@@ -57,10 +50,10 @@ def read():
 	import matplotlib.pyplot as plt
 	import pylab
 
-	consumer_key = "yUXVJqUd36QHq6797UEX1X4kM"
-	consumer_secret = "o6Pr23UFvqkrSCyAT8xarpJWQk1qQwVUXXY5tCO0BVLAgnQxDX"
-	access_token = "846827615843336192-4N8GRMsDuQKxcwHwYPFgkcceMkUcucL"
-	access_token_secret = "kvruasYZ3W3H2lBVfeI3yorpet6pdGCYzSjiBdTVxvAXf"
+	consumer_key = "dummy"
+	consumer_secret = "dummy"
+	access_token = "dummy"
+	access_token_secret = "dummy"
 
 	auth=tweepy.OAuthHandler(consumer_key,consumer_secret)
 	auth.set_access_token(access_token,access_token_secret)
